@@ -62,6 +62,27 @@ export type Database = {
         }
         Relationships: []
       }
+      brands: {
+        Row: {
+          equipment: Database["public"]["Enums"]["equipment_type"]
+          id: string
+          name: string
+          sort: number
+        }
+        Insert: {
+          equipment: Database["public"]["Enums"]["equipment_type"]
+          id?: string
+          name: string
+          sort?: number
+        }
+        Update: {
+          equipment?: Database["public"]["Enums"]["equipment_type"]
+          id?: string
+          name?: string
+          sort?: number
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -95,6 +116,208 @@ export type Database = {
         }
         Relationships: []
       }
+      reformed_equipment: {
+        Row: {
+          brand: string | null
+          created_at: string
+          equipment: string
+          fault: string | null
+          id: string
+          reformed_at: string
+          remarks: string | null
+          request_id: string | null
+          serial: string | null
+          service: string
+          ticket: string | null
+        }
+        Insert: {
+          brand?: string | null
+          created_at?: string
+          equipment: string
+          fault?: string | null
+          id?: string
+          reformed_at?: string
+          remarks?: string | null
+          request_id?: string | null
+          serial?: string | null
+          service: string
+          ticket?: string | null
+        }
+        Update: {
+          brand?: string | null
+          created_at?: string
+          equipment?: string
+          fault?: string | null
+          id?: string
+          reformed_at?: string
+          remarks?: string | null
+          request_id?: string | null
+          serial?: string | null
+          service?: string
+          ticket?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reformed_equipment_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      request_status_history: {
+        Row: {
+          created_at: string
+          id: string
+          note: string | null
+          request_id: string
+          status: Database["public"]["Enums"]["request_status"]
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          request_id: string
+          status: Database["public"]["Enums"]["request_status"]
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          request_id?: string
+          status?: Database["public"]["Enums"]["request_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_status_history_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      requests: {
+        Row: {
+          availability: string | null
+          brand: string
+          created_at: string
+          description: string
+          email: string | null
+          equipment: Database["public"]["Enums"]["equipment_type"]
+          id: string
+          internal_notes: string | null
+          location: string
+          phone: string
+          photo_path: string | null
+          refusal_reason: string | null
+          reporter_name: string
+          reporter_role: string | null
+          serial: string | null
+          service: string
+          status: Database["public"]["Enums"]["request_status"]
+          ticket: string
+          updated_at: string
+          urgency: string
+        }
+        Insert: {
+          availability?: string | null
+          brand: string
+          created_at?: string
+          description: string
+          email?: string | null
+          equipment: Database["public"]["Enums"]["equipment_type"]
+          id?: string
+          internal_notes?: string | null
+          location: string
+          phone: string
+          photo_path?: string | null
+          refusal_reason?: string | null
+          reporter_name: string
+          reporter_role?: string | null
+          serial?: string | null
+          service: string
+          status?: Database["public"]["Enums"]["request_status"]
+          ticket?: string
+          updated_at?: string
+          urgency?: string
+        }
+        Update: {
+          availability?: string | null
+          brand?: string
+          created_at?: string
+          description?: string
+          email?: string | null
+          equipment?: Database["public"]["Enums"]["equipment_type"]
+          id?: string
+          internal_notes?: string | null
+          location?: string
+          phone?: string
+          photo_path?: string | null
+          refusal_reason?: string | null
+          reporter_name?: string
+          reporter_role?: string | null
+          serial?: string | null
+          service?: string
+          status?: Database["public"]["Enums"]["request_status"]
+          ticket?: string
+          updated_at?: string
+          urgency?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          sort: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          sort?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          sort?: number
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          value: string
+        }
+        Insert: {
+          key: string
+          value?: string
+        }
+        Update: {
+          key?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      ticket_counters: {
+        Row: {
+          last: number
+          year: number
+        }
+        Insert: {
+          last?: number
+          year: number
+        }
+        Update: {
+          last?: number
+          year?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -125,9 +348,23 @@ export type Database = {
         }
         Returns: boolean
       }
+      submit_request: { Args: { payload: Json }; Returns: string }
+      track_request: {
+        Args: { _phone?: string; _ticket: string }
+        Returns: Json
+      }
     }
     Enums: {
       app_role: "admin" | "user"
+      equipment_type: "printer" | "monitor" | "pc" | "qr_printer"
+      request_status:
+        | "pending"
+        | "refused"
+        | "accepted"
+        | "awaiting_repair"
+        | "in_repair"
+        | "repaired"
+        | "unrepairable"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -256,6 +493,16 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      equipment_type: ["printer", "monitor", "pc", "qr_printer"],
+      request_status: [
+        "pending",
+        "refused",
+        "accepted",
+        "awaiting_repair",
+        "in_repair",
+        "repaired",
+        "unrepairable",
+      ],
     },
   },
 } as const
