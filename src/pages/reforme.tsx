@@ -30,7 +30,7 @@ export default function Reforme() {
 
   return (
     <>
-      <PageTitle eyebrow={t("nav.reformed")} title={t("reformed.title")} intro={t("reformed.intro")} />
+      <PageTitle n={4} eyebrow={t("nav.reformed")} title={t("reformed.title")} intro={t("reformed.intro")} />
       <div className="container pt-8">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <input className="field" placeholder={t("common.search")} value={q} onChange={(e) => setQ(e.target.value)} aria-label={t("common.search")} />
@@ -47,10 +47,10 @@ export default function Reforme() {
         <p className="eyebrow mt-6 mb-3">{t("reformed.count", { count: rows.length })}</p>
 
         {isLoading ? <p className="text-muted-foreground">{t("common.loading")}</p> : !rows.length ? (
-          <p className="py-16 text-center text-muted-foreground border-y border-foreground/15">{t("reformed.empty")}</p>
+          <p className="py-16 text-center text-muted-foreground rounded-lg border-2 border-dashed border-foreground/15">{t("reformed.empty")}</p>
         ) : (
           <>
-            <div className="hidden md:block overflow-x-auto border-t-2 border-foreground">
+            <div className="hidden md:block overflow-x-auto rounded-lg bg-paper border border-foreground/10">
               <table className="w-full text-sm">
                 <thead><tr className="text-start">
                   {["ticket", "type", "brand", "serial", "service", "fault", "date", "remarks"].map((c) => <th key={c} className="eyebrow text-start py-3 px-3 border-b border-foreground/20 font-normal">{t(`reformed.${c}`)}</th>)}
@@ -73,7 +73,7 @@ export default function Reforme() {
             </div>
             <ul className="md:hidden space-y-4">
               {rows.map((r) => (
-                <li key={r.id} className="relative bg-paper border border-foreground/20 p-5 cut">
+                <li key={r.id} className="relative bg-paper border border-foreground/10 p-5 rounded-lg">
                   <span className="stamp text-destructive absolute top-4 end-4">{t("stamp.reformed")}</span>
                   <p className="font-mono text-sm font-bold">{r.ticket ?? "—"}</p>
                   <p className="font-display text-xl mt-1">{eqLabel(r.equipment)} · {r.brand}</p>
