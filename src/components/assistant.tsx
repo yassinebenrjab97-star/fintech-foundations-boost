@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import { MessageCircle, Send, X, ArrowRight } from "lucide-react";
-import { LOGO_URL } from "./site";
+import { Emblem } from "./site";
 
 type Msg = { role: "user" | "assistant"; content: string };
 const URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/assistant`;
@@ -51,32 +51,32 @@ export default function Assistant() {
     <>
       {!open && (
         <button onClick={() => setOpen(true)} aria-label={t("ai.open")}
-          className="fixed bottom-5 end-5 z-50 flex items-center gap-2 bg-primary text-primary-foreground ps-3 pe-4 py-3 cut-sm shadow-lg hover:bg-primary/90">
-          <MessageCircle className="h-5 w-5" /><span className="text-sm font-semibold hidden sm:inline">{t("ai.name")}</span>
+          className="group fixed bottom-5 end-5 z-50 flex items-center gap-3 rounded-full bg-panel text-panel-foreground p-1.5 sm:pe-5 shadow-xl ring-1 ring-panel-foreground/10 hover:-translate-y-0.5 transition-transform">
+          <span className="relative grid place-items-center h-10 w-10 rounded-full bg-accent text-accent-foreground"><MessageCircle className="h-5 w-5" /><span className="absolute top-0 end-0 h-2.5 w-2.5 rounded-full bg-success ring-2 ring-panel" /></span><span className="text-sm font-semibold hidden sm:inline">{t("ai.name")}</span>
         </button>
       )}
       {open && (
         <section role="dialog" aria-label={t("ai.name")}
-          className="fixed z-50 inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:end-5 sm:w-[400px] h-[85vh] sm:h-[600px] flex flex-col bg-paper border border-foreground/25 shadow-2xl animate-fade-up">
-          <header className="flex items-center gap-3 px-4 py-3 border-b border-foreground/15">
-            <img src={LOGO_URL} alt="" className="h-9 w-9" />
+          className="fixed z-50 inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:end-5 sm:w-[400px] h-[85vh] sm:h-[600px] flex flex-col overflow-hidden rounded-t-[18px] sm:rounded-[18px] bg-paper border border-foreground/15 shadow-2xl animate-fade-up">
+          <header className="flex items-center gap-3 px-4 py-3 bg-panel text-panel-foreground border-b-4 border-accent">
+            <Emblem className="h-10 w-10" ring={false} />
             <div className="flex-1 min-w-0">
-              <p className="font-display font-semibold leading-tight">{t("ai.name")}</p>
-              <p className="eyebrow">{t("ai.role")}</p>
+              <p className="font-wide font-bold uppercase text-sm leading-tight">{t("ai.name")}</p>
+              <p className="eyebrow !text-panel-muted">{t("ai.role")}</p>
             </div>
-            <button onClick={() => setOpen(false)} aria-label={t("ai.close")} className="p-2 hover:bg-foreground/5"><X className="h-4 w-4" /></button>
+            <button onClick={() => setOpen(false)} aria-label={t("ai.close")} className="p-2 rounded-md hover:bg-panel-foreground/10"><X className="h-4 w-4" /></button>
           </header>
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 text-sm" aria-live="polite">
             <p className="text-muted-foreground">{t("ai.hello")}</p>
             {!msgs.length && (
               <div className="flex flex-wrap gap-2">
                 {["c1", "c2", "c3", "c4"].map((c) => (
-                  <button key={c} onClick={() => send(t(`ai.${c}`))} className="px-3 py-1.5 text-xs border border-foreground/25 hover:border-secondary hover:text-secondary text-start">{t(`ai.${c}`)}</button>
+                  <button key={c} onClick={() => send(t(`ai.${c}`))} className="rounded-full px-3 py-1.5 text-xs border border-foreground/20 hover:border-secondary hover:text-secondary text-start">{t(`ai.${c}`)}</button>
                 ))}
               </div>
             )}
             {msgs.map((m, i) => m.role === "user" ? (
-              <div key={i} className="ms-auto max-w-[85%] bg-primary text-primary-foreground px-3 py-2 whitespace-pre-wrap">{m.content}</div>
+              <div key={i} className="ms-auto max-w-[85%] rounded-2xl rounded-ee-sm bg-panel text-panel-foreground px-3.5 py-2 whitespace-pre-wrap">{m.content}</div>
             ) : (
               <div key={i} className="prose prose-sm max-w-none dark:prose-invert prose-p:my-1.5 prose-ol:my-1.5 prose-ul:my-1.5 text-foreground">
                 <ReactMarkdown>{m.content}</ReactMarkdown>

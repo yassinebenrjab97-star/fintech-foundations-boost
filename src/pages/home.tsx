@@ -95,7 +95,7 @@ export default function Home() {
               <p className="mt-2 text-sm text-muted-foreground max-w-[30ch]">{t(`home.s${n}d`)}</p>
               {n === 4 && (
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full px-3 py-1 text-xs font-semibold bg-success/12 text-success border border-success/30">{t("status.repaired")}</span>
+                  <span className="rounded-full px-3 py-1 text-xs font-semibold bg-success/10 text-success border border-success/30">{t("status.repaired")}</span>
                   <span className="rounded-full px-3 py-1 text-xs font-semibold bg-destructive/10 text-destructive border border-destructive/30">{t("status.unrepairable")}</span>
                 </div>
               )}

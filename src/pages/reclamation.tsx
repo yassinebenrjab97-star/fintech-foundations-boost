@@ -38,8 +38,8 @@ function ServicePicker({ value, onChange, options, error }: { value: string; onC
         {value || t("form.servicePh")} <ChevronDown className="h-4 w-4" />
       </button>
       {open && (
-        <div className="absolute z-30 mt-1 w-full bg-paper border border-foreground/30 shadow-lg">
-          <input autoFocus className="field border-0 border-b" placeholder={t("common.search")} value={q} onChange={(e) => setQ(e.target.value)}
+        <div className="absolute z-30 mt-2 w-full rounded-[10px] overflow-hidden bg-paper border border-foreground/20 shadow-xl">
+          <input autoFocus className="field rounded-none border-0 border-b" placeholder={t("common.search")} value={q} onChange={(e) => setQ(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); if (e.key === "Enter" && list[0]) { e.preventDefault(); onChange(list[0]); setOpen(false); } }} />
           <ul role="listbox" className="max-h-64 overflow-auto py-1">
             {list.map((o) => (
@@ -60,11 +60,11 @@ function ServicePicker({ value, onChange, options, error }: { value: string; onC
 
 function Section({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
-    <fieldset className="grid md:grid-cols-[200px_1fr] gap-6 py-10 border-b border-foreground/15">
+    <fieldset className="grid md:grid-cols-[220px_1fr] gap-6 py-12 border-b border-foreground/10">
       <legend className="contents">
-        <span className="flex md:flex-col gap-3 md:gap-1 items-baseline">
-          <span className="font-display text-5xl font-light text-secondary/80 leading-none">0{n}</span>
-          <span className="font-display text-xl font-semibold">{title}</span>
+        <span className="flex md:flex-col gap-4 items-center md:items-start md:sticky md:top-36 self-start">
+          <span className="picto h-11 w-11 bg-panel text-panel-foreground text-base">{n}</span>
+          <span className="font-wide font-extrabold uppercase text-lg leading-tight">{title}</span>
         </span>
       </legend>
       <div className="space-y-6">{children}</div>
@@ -150,9 +150,9 @@ export default function Reclamation() {
     return (
       <div className="container py-16 md:py-24">
         <p className="eyebrow text-center mb-3">{t("done.title")}</p>
-        <h1 className="text-center text-4xl md:text-5xl font-semibold mb-10">{t("done.title")}</h1>
+        <h1 className="text-center sign-caps text-4xl md:text-6xl mb-10">{t("done.title")}</h1>
         <TicketCard ticket={ticket} />
-        <div className="max-w-md mx-auto mt-8 flex gap-3 items-start p-4 border-s-4 border-warning bg-warning/10">
+        <div className="max-w-md mx-auto mt-8 flex gap-3 items-start p-4 rounded-[10px] border-s-4 border-warning bg-warning/10">
           <AlertTriangle className="h-5 w-5 text-warning shrink-0" />
           <p className="text-sm font-medium">{t("done.wait")}</p>
         </div>
@@ -166,7 +166,7 @@ export default function Reclamation() {
 
   return (
     <>
-      <PageTitle eyebrow={t("nav.complaint")} title={t("form.title")} intro={t("form.intro")} />
+      <PageTitle n={1} eyebrow={t("nav.complaint")} title={t("form.title")} intro={t("form.intro")} />
       <form onSubmit={submit} noValidate className="container">
         <Section n={1} title={t("form.sec1")}>
           <div>
@@ -179,15 +179,15 @@ export default function Reclamation() {
         <Section n={2} title={t("form.sec2")}>
           <div>
             <span className="label" id="eq-label">{t("form.equipment")} *</span>
-            <div role="radiogroup" aria-labelledby="eq-label" className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/15 border border-foreground/15">
+            <div role="radiogroup" aria-labelledby="eq-label" className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {EQUIPMENT.map((eq) => {
                 const Icon = EQ_ICON[eq]; const on = f.equipment === eq;
                 return (
                   <button key={eq} type="button" role="radio" aria-checked={on} id={eq === "printer" ? "equipment" : undefined}
                     onClick={() => { set("equipment", eq as Equipment); set("brand", ""); }}
-                    className={cn("relative flex flex-col items-start gap-6 p-5 text-start transition-colors", on ? "bg-primary text-primary-foreground" : "bg-paper hover:bg-muted")}>
+                    className={cn("relative flex flex-col items-start gap-8 p-5 text-start rounded-lg border transition-colors", on ? "bg-panel text-panel-foreground border-panel" : "bg-paper border-foreground/15 hover:border-secondary")}>
                     <Icon className="h-7 w-7" strokeWidth={1.4} />
-                    <span className="font-display text-lg font-semibold leading-tight">{t(`eq.${eq}`)}</span>
+                    <span className="font-wide font-bold uppercase text-sm leading-tight">{t(`eq.${eq}`)}</span>
                     {on && <Check className="absolute top-3 end-3 h-4 w-4 text-accent" />}
                   </button>
                 );
@@ -229,7 +229,7 @@ export default function Reclamation() {
                 {SYMPTOMS[f.equipment].map((s) => {
                   const txt = t(`sym.${s}`);
                   return (
-                    <button key={s} type="button" className="px-3 py-1.5 text-sm border border-foreground/25 hover:border-secondary hover:text-secondary"
+                    <button key={s} type="button" className="rounded-full px-3.5 py-1.5 text-sm bg-paper border border-foreground/20 hover:border-secondary hover:text-secondary"
                       onClick={() => set("description", f.description?.includes(txt) ? f.description : [f.description, txt].filter(Boolean).join(" — "))}>
                       + {txt}
                     </button>
@@ -245,7 +245,7 @@ export default function Reclamation() {
           </div>
           <div>
             <span className="label" id="urg">{t("form.urgency")} *</span>
-            <div role="radiogroup" aria-labelledby="urg" className="inline-flex border border-foreground/25">
+            <div role="radiogroup" aria-labelledby="urg" className="inline-flex rounded-[10px] overflow-hidden border border-foreground/20 bg-paper">
               {(["normal", "urgent", "critical"] as const).map((u) => (
                 <button key={u} type="button" role="radio" aria-checked={f.urgency === u} onClick={() => set("urgency", u)}
                   className={cn("px-4 py-2 text-sm font-semibold border-e last:border-e-0 border-foreground/25",
@@ -258,7 +258,7 @@ export default function Reclamation() {
           </div>
           <div>
             <span className="label">{t("form.photo")} <span className="normal-case font-normal text-muted-foreground">({t("common.optional")})</span></span>
-            <label className="flex items-center gap-3 p-4 border border-dashed border-foreground/30 cursor-pointer hover:border-secondary">
+            <label className="flex items-center gap-3 p-5 rounded-[10px] bg-paper border-2 border-dashed border-foreground/20 cursor-pointer hover:border-secondary">
               <Upload className="h-5 w-5 text-secondary" />
               <span className="text-sm">{photo ? photo.name : t("form.photoHint")}</span>
               <input type="file" accept="image/*" className="sr-only" onChange={(e) => { setPhoto(e.target.files?.[0] ?? null); setErrors((x) => ({ ...x, photo: "" })); }} />
