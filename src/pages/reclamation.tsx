@@ -166,7 +166,7 @@ export default function Reclamation() {
 
   return (
     <>
-      <PageTitle n={1} eyebrow={t("nav.complaint")} title={t("form.title")} intro={t("form.intro")} />
+      <PageTitle n={2} eyebrow={t("nav.complaint")} title={t("form.title")} intro={t("form.intro")} />
       <form onSubmit={submit} noValidate className="container">
         <Section n={1} title={t("form.sec1")}>
           <div>

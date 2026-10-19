@@ -44,7 +44,7 @@ export default function Suivi() {
 
   return (
     <>
-      <PageTitle n={2} eyebrow={t("nav.track")} title={t("track.title")} intro={t("track.intro")} />
+      <PageTitle n={3} eyebrow={t("nav.track")} title={t("track.title")} intro={t("track.intro")} />
       <div className="container grid lg:grid-cols-[340px_1fr] gap-12 pt-10">
         <form onSubmit={(e) => { e.preventDefault(); lookup(); }} className="space-y-4 lg:sticky lg:top-36 self-start rounded-lg bg-paper border border-foreground/10 p-6">
           <div>

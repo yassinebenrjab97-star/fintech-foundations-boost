@@ -30,7 +30,7 @@ export default function Reforme() {
 
   return (
     <>
-      <PageTitle n={3} eyebrow={t("nav.reformed")} title={t("reformed.title")} intro={t("reformed.intro")} />
+      <PageTitle n={4} eyebrow={t("nav.reformed")} title={t("reformed.title")} intro={t("reformed.intro")} />
       <div className="container pt-8">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <input className="field" placeholder={t("common.search")} value={q} onChange={(e) => setQ(e.target.value)} aria-label={t("common.search")} />

@@ -183,7 +183,7 @@ export function PageTitle({ eyebrow, title, intro, n }: { eyebrow: string; title
         <span className="absolute inset-y-0 start-0 w-2 bg-accent" aria-hidden />
         <ArrowUpRight className="absolute -bottom-10 -end-6 h-56 w-56 md:h-72 md:w-72 text-panel-foreground/[0.06] rtl:-scale-x-100" strokeWidth={1.2} aria-hidden />
         <div className="relative flex items-center gap-3 mb-6">
-          {n && <span className="picto h-8 w-8 bg-accent text-accent-foreground text-sm">{n}</span>}
+          {n && <span className="picto h-8 px-2 bg-accent text-accent-foreground text-xs">0{n}</span>}
           <span className="eyebrow !text-panel-muted">{eyebrow}</span>
         </div>
         <h1 className="relative sign-caps text-[clamp(2.2rem,6.5vw,5rem)] max-w-4xl">{title}</h1>
