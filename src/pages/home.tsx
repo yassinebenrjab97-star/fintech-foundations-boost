@@ -26,7 +26,7 @@ export default function Home() {
               <p className="eyebrow !text-panel-muted max-w-[28ch]">{t("common.hospital")} — {t("common.city")}</p>
               <Emblem className="h-16 w-16 md:h-24 md:w-24 -mt-1" ring={false} />
             </div>
-            <h1 className="mt-6 md:mt-2 sign-caps text-[clamp(2.3rem,7vw,6.4rem)] hyphens-auto [overflow-wrap:anywhere]">
+            <h1 className="mt-6 md:mt-2 sign-caps text-[clamp(1.7rem,7.4vw,6.4rem)] break-words">
               {t("common.dept")}<span className="inline-block ms-2 h-[0.18em] w-[0.18em] bg-accent align-baseline" aria-hidden />
             </h1>
             <p className="mt-8 max-w-xl text-lg text-panel-muted">{t("home.lead")}</p>
@@ -59,10 +59,7 @@ export default function Home() {
 
       {/* Equipment covered */}
       <section className="container pt-20 md:pt-28" aria-labelledby="scope">
-        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-          <h2 id="scope" className="sign-caps text-3xl md:text-5xl max-w-[16ch]">{t("home.scope")}</h2>
-          <span className="eyebrow">04 · IT</span>
-        </div>
+        <h2 id="scope" className="sign-caps text-3xl md:text-5xl max-w-[16ch] mb-8">{t("home.scope")}</h2>
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {EQUIPMENT.map((eq, i) => {
             const Icon = EQ_ICON[eq];
