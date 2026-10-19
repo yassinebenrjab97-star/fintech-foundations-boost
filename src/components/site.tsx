@@ -26,7 +26,7 @@ export function useSettings() {
 /** Emblem on a white disc, like an enamel plaque. */
 export function Emblem({ className, ring = true }: { className?: string; ring?: boolean }) {
   return (
-    <span className={cn("relative inline-grid place-items-center rounded-full bg-[rgb(255_255_255)] shrink-0", ring && "ring-1 ring-foreground/10", className)}>
+    <span className={cn("relative inline-grid place-items-center rounded-full bg-plaque shrink-0", ring && "ring-1 ring-foreground/10", className)}>
       <img src={LOGO_URL} alt="" className="h-[88%] w-[88%] object-contain" />
     </span>
   );

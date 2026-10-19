@@ -22,6 +22,7 @@ export default {
         background: c("background"),
         foreground: c("foreground"),
         paper: c("paper"),
+        plaque: c("plaque"),
         panel: { DEFAULT: c("panel"), foreground: c("panel-foreground"), muted: c("panel-muted") },
         primary: { DEFAULT: c("primary"), foreground: c("primary-foreground") },
         secondary: { DEFAULT: c("secondary"), foreground: c("secondary-foreground") },
@@ -35,6 +36,7 @@ export default {
       },
       borderRadius: { lg: "14px", md: "10px", sm: "6px" },
       keyframes: {
+        slide: { "0%": { transform: "translateX(-100%)" }, "100%": { transform: "translateX(300%)" } },
         "fade-up": { "0%": { opacity: "0", transform: "translateY(10px)" }, "100%": { opacity: "1", transform: "none" } },
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
         "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },

@@ -21,6 +21,7 @@
     --accent: 250 206 0;
     --accent-foreground: 10 22 64;
     --panel: 12 30 102;
+    --plaque: 255 255 255;
     --panel-foreground: 244 246 250;
     --panel-muted: 160 186 230;
     --muted: 228 232 238;
@@ -51,6 +52,7 @@
     --accent: 250 214 0;
     --accent-foreground: 6 12 32;
     --panel: 16 34 96;
+    --plaque: 255 255 255;
     --panel-foreground: 240 243 250;
     --panel-muted: 150 176 222;
     --muted: 20 30 64;
