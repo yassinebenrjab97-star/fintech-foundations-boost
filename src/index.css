@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,103 +6,125 @@
 
 @layer base {
   :root {
-    /* Emblem: navy 14 38 128, sky 22 186 245, yellow 250 214 0 */
-    --background: 246 242 233;
-    --paper: 251 248 241;
-    --foreground: 14 27 77;
-    --card: 251 248 241;
-    --card-foreground: 14 27 77;
-    --popover: 251 248 241;
-    --popover-foreground: 14 27 77;
+    /* Emblem: navy 14 38 128, sky 22 186 245, signal yellow 250 214 0 */
+    --background: 239 241 244;
+    --paper: 252 252 253;
+    --foreground: 10 22 64;
+    --card: 252 252 253;
+    --card-foreground: 10 22 64;
+    --popover: 252 252 253;
+    --popover-foreground: 10 22 64;
     --primary: 14 38 128;
-    --primary-foreground: 251 248 241;
-    --secondary: 22 160 220;
-    --secondary-foreground: 251 248 241;
-    --accent: 250 204 0;
-    --accent-foreground: 14 27 77;
-    --muted: 234 228 214;
-    --muted-foreground: 88 96 128;
-    --destructive: 190 40 40;
-    --destructive-foreground: 251 248 241;
-    --success: 22 120 70;
-    --success-foreground: 251 248 241;
-    --warning: 176 98 0;
-    --warning-foreground: 251 248 241;
-    --border: 14 27 77;
-    --input: 14 27 77;
-    --ring: 22 160 220;
-    --radius: 3px;
+    --primary-foreground: 252 252 253;
+    --secondary: 18 150 214;
+    --secondary-foreground: 252 252 253;
+    --accent: 250 206 0;
+    --accent-foreground: 10 22 64;
+    --panel: 12 30 102;
+    --panel-foreground: 244 246 250;
+    --panel-muted: 160 186 230;
+    --muted: 228 232 238;
+    --muted-foreground: 84 96 128;
+    --destructive: 196 38 46;
+    --destructive-foreground: 252 252 253;
+    --success: 18 128 82;
+    --success-foreground: 252 252 253;
+    --warning: 180 100 0;
+    --warning-foreground: 252 252 253;
+    --border: 10 22 64;
+    --input: 10 22 64;
+    --ring: 18 150 214;
+    --radius: 10px;
   }
   .dark {
-    --background: 10 16 40;
-    --paper: 15 23 54;
-    --foreground: 236 232 220;
-    --card: 15 23 54;
-    --card-foreground: 236 232 220;
-    --popover: 15 23 54;
-    --popover-foreground: 236 232 220;
-    --primary: 120 205 245;
-    --primary-foreground: 10 16 40;
-    --secondary: 22 186 245;
-    --secondary-foreground: 10 16 40;
+    --background: 6 12 32;
+    --paper: 11 20 48;
+    --foreground: 232 236 245;
+    --card: 11 20 48;
+    --card-foreground: 232 236 245;
+    --popover: 11 20 48;
+    --popover-foreground: 232 236 245;
+    --primary: 112 200 245;
+    --primary-foreground: 6 12 32;
+    --secondary: 40 180 240;
+    --secondary-foreground: 6 12 32;
     --accent: 250 214 0;
-    --accent-foreground: 10 16 40;
-    --muted: 24 34 72;
-    --muted-foreground: 160 168 196;
-    --destructive: 240 100 90;
-    --destructive-foreground: 10 16 40;
-    --success: 90 200 140;
-    --success-foreground: 10 16 40;
+    --accent-foreground: 6 12 32;
+    --panel: 16 34 96;
+    --panel-foreground: 240 243 250;
+    --panel-muted: 150 176 222;
+    --muted: 20 30 64;
+    --muted-foreground: 150 160 190;
+    --destructive: 240 98 92;
+    --destructive-foreground: 6 12 32;
+    --success: 80 200 140;
+    --success-foreground: 6 12 32;
     --warning: 240 170 60;
-    --warning-foreground: 10 16 40;
-    --border: 236 232 220;
-    --input: 236 232 220;
-    --ring: 22 186 245;
+    --warning-foreground: 6 12 32;
+    --border: 232 236 245;
+    --input: 232 236 245;
+    --ring: 40 180 240;
   }
 
   * { @apply border-border/15; }
   html { -webkit-tap-highlight-color: transparent; }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  }
-  h1, h2, h3, .font-display { font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
-  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .font-display { font-family: "Noto Sans Arabic", Fraunces, serif; letter-spacing: 0; }
+  body { @apply bg-background text-foreground font-sans antialiased; font-feature-settings: "ss01", "tnum"; }
+  h1, h2, h3, .font-display { font-family: Archivo, system-ui, sans-serif; font-stretch: 112%; letter-spacing: -0.015em; }
+  [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .font-display, [dir="rtl"] .font-wide { font-family: "IBM Plex Sans Arabic", Archivo, sans-serif; letter-spacing: 0; }
   :focus-visible { outline: 2px solid rgb(var(--ring)); outline-offset: 2px; }
+  ::selection { background: rgb(var(--accent)); color: rgb(var(--accent-foreground)); }
 }
 
 @layer components {
-  .rule { @apply border-t border-foreground/20; }
-  .eyebrow { @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground; }
-  .cut { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%); }
-  .cut-sm { clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
+  /* Signage typography: extra-wide caps, like hospital wayfinding plates */
+  .font-wide { font-family: Archivo, system-ui, sans-serif; font-stretch: 125%; letter-spacing: -0.01em; }
+  .sign-caps { @apply font-wide uppercase font-extrabold; line-height: .9; }
+
+  .rule { @apply border-t border-foreground/15; }
+  .eyebrow { @apply font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground; }
+  .cut { @apply rounded-lg; }
+  .cut-sm { @apply rounded-md; }
   .link-u { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .3s ease; }
-  .link-u:hover, .link-u[aria-current="page"] { background-size: 100% 1px; }
+  .link-u:hover { background-size: 100% 1px; }
   [dir="rtl"] .link-u { background-position: 100% 100%; }
 
-  .btn { @apply inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold transition-colors disabled:opacity-50 disabled:pointer-events-none; }
-  .btn-primary { @apply btn cut-sm bg-primary text-primary-foreground hover:bg-primary/90; }
-  .btn-accent { @apply btn cut-sm bg-accent text-accent-foreground hover:bg-accent/85; }
-  .btn-ghost { @apply btn border border-foreground/30 hover:bg-foreground/5; }
-  .btn-sm { @apply px-3 py-2 text-xs; }
+  /* Sign plate: rounded navy panel with blueprint grid */
+  .plate { @apply relative overflow-hidden rounded-[18px] bg-panel text-panel-foreground; }
+  .blueprint {
+    background-image:
+      linear-gradient(rgb(var(--panel-foreground) / .05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--panel-foreground) / .05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  /* Pictogram square used for numbers & icons */
+  .picto { @apply inline-grid place-items-center shrink-0 rounded-[8px] font-wide font-extrabold; }
 
-  .field { @apply w-full bg-paper border border-foreground/25 px-3 py-2.5 text-sm placeholder:text-muted-foreground/70 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary; }
-  .label { @apply block text-xs font-semibold uppercase tracking-wider mb-1.5; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-5 py-3 text-sm font-semibold transition-all disabled:opacity-50 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-primary text-primary-foreground hover:brightness-110 active:translate-y-px; }
+  .btn-accent { @apply btn bg-accent text-accent-foreground hover:brightness-105 active:translate-y-px; }
+  .btn-ghost { @apply btn border border-foreground/25 bg-paper hover:border-foreground/60; }
+  .btn-sm { @apply px-3 py-2 text-xs rounded-md; }
+
+  .field { @apply w-full rounded-[10px] bg-paper border border-foreground/20 px-3.5 py-3 text-sm placeholder:text-muted-foreground/70 transition-colors focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/25; }
+  .label { @apply block font-mono text-[11px] font-semibold uppercase tracking-[0.12em] mb-2 text-foreground/80; }
+
+  /* Directory leader dots */
+  .leader { @apply flex-1 mx-3 translate-y-[-4px] border-b-2 border-dotted border-foreground/25 min-w-[1.5rem]; }
 
   .ticket {
-    @apply relative bg-paper border border-foreground/20;
-    --hole: 10px;
+    @apply relative bg-paper border border-foreground/15 rounded-[14px];
+    --hole: 12px;
     -webkit-mask: radial-gradient(circle var(--hole) at 0 var(--perf, 50%), transparent 98%, #000) left / 51% 100% no-repeat,
                   radial-gradient(circle var(--hole) at 100% var(--perf, 50%), transparent 98%, #000) right / 51% 100% no-repeat;
             mask: radial-gradient(circle var(--hole) at 0 var(--perf, 50%), transparent 98%, #000) left / 51% 100% no-repeat,
                   radial-gradient(circle var(--hole) at 100% var(--perf, 50%), transparent 98%, #000) right / 51% 100% no-repeat;
   }
-  .perforation { border-top: 2px dashed rgb(var(--foreground) / 0.25); }
+  .perforation { border-top: 2px dashed rgb(var(--foreground) / 0.2); }
 
   .stamp {
-    @apply inline-block font-mono font-bold uppercase tracking-[0.15em] text-[11px] px-2.5 py-1 border-2;
+    @apply inline-block font-mono font-semibold uppercase tracking-[0.15em] text-[11px] px-2.5 py-1 border-2;
     transform: rotate(-4deg);
-    border-radius: 3px;
+    border-radius: 4px;
     box-shadow: inset 0 0 0 1px currentColor;
   }
 }

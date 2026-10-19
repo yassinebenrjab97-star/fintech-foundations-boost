@@ -11,9 +11,9 @@ export default {
     container: { center: true, padding: "1.25rem", screens: { "2xl": "1240px" } },
     extend: {
       fontFamily: {
-        display: ["Fraunces", "Georgia", "serif"],
-        sans: ["'Instrument Sans'", "'Noto Sans Arabic'", "system-ui", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        display: ["Archivo", "system-ui", "sans-serif"],
+        sans: ["Archivo", "'IBM Plex Sans Arabic'", "system-ui", "sans-serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       colors: {
         border: c("border"),
@@ -22,6 +22,7 @@ export default {
         background: c("background"),
         foreground: c("foreground"),
         paper: c("paper"),
+        panel: { DEFAULT: c("panel"), foreground: c("panel-foreground"), muted: c("panel-muted") },
         primary: { DEFAULT: c("primary"), foreground: c("primary-foreground") },
         secondary: { DEFAULT: c("secondary"), foreground: c("secondary-foreground") },
         accent: { DEFAULT: c("accent"), foreground: c("accent-foreground") },
@@ -32,7 +33,7 @@ export default {
         popover: { DEFAULT: c("popover"), foreground: c("popover-foreground") },
         card: { DEFAULT: c("card"), foreground: c("card-foreground") },
       },
-      borderRadius: { lg: "4px", md: "3px", sm: "2px" },
+      borderRadius: { lg: "14px", md: "10px", sm: "6px" },
       keyframes: {
         "fade-up": { "0%": { opacity: "0", transform: "translateY(10px)" }, "100%": { opacity: "1", transform: "none" } },
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
